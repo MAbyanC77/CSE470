@@ -1,0 +1,816 @@
+/* Deadline Tracker Styles */
+.deadline-tracker {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Header */
+.tracker-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.header-content h1 {
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+.header-content p {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Notifications */
+.notifications-section {
+  position: relative;
+}
+
+.notifications-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.notifications-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.notifications-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  min-width: 350px;
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-top: 10px;
+}
+
+.notification-item {
+  display: flex;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-content {
+  flex: 1;
+}
+
+.notification-content h4 {
+  margin: 0 0 5px 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.notification-content p {
+  margin: 0 0 5px 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.notification-content small {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.mark-read-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.mark-read-btn:hover {
+  background: #218838;
+  transform: scale(1.1);
+}
+
+/* Filters */
+.filters-section {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.filter-group select {
+  padding: 12px 15px;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.filter-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.btn-apply, .btn-clear {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.btn-apply {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-apply:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-clear {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-clear:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+
+/* Content */
+.tracker-content {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Loading State */
+.loading-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.empty-state h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.empty-state p {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+/* Table */
+.deadlines-table-container {
+  overflow-x: auto;
+}
+
+.deadlines-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.deadlines-table th {
+  background: #f8f9fa;
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #dee2e6;
+  white-space: nowrap;
+}
+
+.deadlines-table td {
+  padding: 20px 15px;
+  border-bottom: 1px solid #dee2e6;
+  vertical-align: top;
+}
+
+.deadlines-table tr:hover {
+  background: #f8f9fa;
+}
+
+/* Status-based row styling */
+.deadlines-table tr.status-urgent {
+  background: #fff5f5;
+  border-left: 4px solid #dc3545;
+}
+
+.deadlines-table tr.status-urgent:hover {
+  background: #ffe6e6;
+}
+
+.deadlines-table tr.status-warning {
+  background: #fffbf0;
+  border-left: 4px solid #ffc107;
+}
+
+.deadlines-table tr.status-warning:hover {
+  background: #fff3cd;
+}
+
+.deadlines-table tr.status-active {
+  background: #f8fff8;
+  border-left: 4px solid #28a745;
+}
+
+.deadlines-table tr.status-active:hover {
+  background: #e6ffe6;
+}
+
+.deadlines-table tr.status-expired {
+  background: #f5f5f5;
+  border-left: 4px solid #6c757d;
+  opacity: 0.7;
+}
+
+/* University Info */
+.university-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.university-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.university-name {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.university-location {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+/* Program Info */
+.program-name {
+  font-weight: 500;
+  color: #333;
+  line-height: 1.4;
+}
+
+/* Badges */
+.level-badge {
+  background: #e9ecef;
+  color: #495057;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.rolling-badge {
+  background: linear-gradient(135deg, #17a2b8, #138496);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.status-urgent {
+  background: #dc3545;
+  color: white;
+}
+
+.status-badge.status-warning {
+  background: #ffc107;
+  color: #212529;
+}
+
+.status-badge.status-active {
+  background: #28a745;
+  color: white;
+}
+
+.status-badge.status-expired {
+  background: #6c757d;
+  color: white;
+}
+
+/* Deadline Info */
+.deadline-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.deadline-date {
+  font-weight: 600;
+  color: #333;
+}
+
+.days-left {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.days-left.status-urgent {
+  color: #dc3545;
+}
+
+.days-left.status-warning {
+  color: #fd7e14;
+}
+
+.days-left.status-active {
+  color: #28a745;
+}
+
+.expired-deadline {
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Actions */
+.btn-remove {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-remove:hover {
+  background: #c82333;
+  transform: scale(1.1);
+}
+
+/* Auth Required */
+.auth-required {
+  text-align: center;
+  padding: 80px 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.auth-required h2 {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.auth-required p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+  display: flex;
+  background: white;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 20px 30px;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.tab-btn:hover {
+  background: #f8f9fa;
+  color: #333;
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-bottom-color: #667eea;
+}
+
+/* Applied Universities Styles */
+.applications-table-container {
+  overflow-x: auto;
+}
+
+.applications-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.applications-table th {
+  background: #f8f9fa;
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #dee2e6;
+  white-space: nowrap;
+}
+
+.applications-table td {
+  padding: 20px 15px;
+  border-bottom: 1px solid #dee2e6;
+  vertical-align: top;
+}
+
+.applications-table tr:hover {
+  background: #f8f9fa;
+}
+
+/* Application Status Row Styling */
+.applications-table tr.application-pending {
+  background: #fff8e1;
+  border-left: 4px solid #ffc107;
+}
+
+.applications-table tr.application-pending:hover {
+  background: #fff3cd;
+}
+
+.applications-table tr.application-accepted {
+  background: #f8fff8;
+  border-left: 4px solid #28a745;
+}
+
+.applications-table tr.application-accepted:hover {
+  background: #e6ffe6;
+}
+
+.applications-table tr.application-declined {
+  background: #fff5f5;
+  border-left: 4px solid #dc3545;
+}
+
+.applications-table tr.application-declined:hover {
+  background: #ffe6e6;
+}
+
+.applications-table tr.application-under_review {
+  background: #f0f8ff;
+  border-left: 4px solid #17a2b8;
+}
+
+.applications-table tr.application-under_review:hover {
+  background: #e6f3ff;
+}
+
+/* Subject and Academic Year */
+.subject-name {
+  font-weight: 500;
+  color: #333;
+  line-height: 1.4;
+}
+
+.academic-year {
+  background: #e9ecef;
+  color: #495057;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Scholarship Badge */
+.scholarship-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.scholarship-badge.yes {
+  background: #d4edda;
+  color: #155724;
+}
+
+.scholarship-badge.no {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* Applied Date */
+.applied-date {
+  font-weight: 500;
+  color: #666;
+}
+
+/* Application Status Badge */
+.application-status-badge {
+  padding: 8px 15px;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.application-status-badge.status-pending {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.application-status-badge.status-accepted {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.application-status-badge.status-declined {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.application-status-badge.status-under_review {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+/* Application Actions */
+.application-actions {
+  text-align: center;
+}
+
+.progress-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.progress-link:hover {
+  background: linear-gradient(135deg, #0056b3, #004085);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  color: white;
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .deadline-tracker {
+    padding: 15px;
+  }
+  
+  .tracker-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    padding: 30px 20px;
+  }
+  
+  .header-content h1 {
+    font-size: 2rem;
+  }
+  
+  .filters-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-actions {
+    justify-content: center;
+  }
+  
+  .deadlines-table {
+    font-size: 0.85rem;
+  }
+  
+  .deadlines-table th,
+  .deadlines-table td {
+    padding: 12px 8px;
+  }
+  
+  .university-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .notifications-dropdown {
+    min-width: 300px;
+    right: -50px;
+  }
+  
+  .tab-navigation {
+    margin-bottom: 20px;
+  }
+  
+  .tab-btn {
+    padding: 15px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .applications-table {
+    font-size: 0.85rem;
+  }
+  
+  .applications-table th,
+  .applications-table td {
+    padding: 12px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tracker-header {
+    padding: 20px 15px;
+  }
+  
+  .header-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .filters-section {
+    padding: 20px 15px;
+  }
+  
+  .deadlines-table {
+    font-size: 0.8rem;
+  }
+  
+  .university-info {
+    gap: 6px;
+  }
+  
+  .university-logo {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .notifications-dropdown {
+    min-width: 280px;
+    right: -80px;
+  }
+  
+  .tab-btn {
+    padding: 12px 15px;
+    font-size: 0.85rem;
+  }
+  
+  .applications-table {
+    font-size: 0.8rem;
+  }
+  
+  .application-status-badge {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .progress-link {
+    font-size: 10px;
+    padding: 4px 8px;
+    gap: 3px;
+  }
+
+  .application-actions {
+    min-width: 80px;
+  }
+}

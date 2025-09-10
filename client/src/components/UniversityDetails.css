@@ -1,0 +1,1330 @@
+/* University Details Page */
+.university-details {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px 0;
+}
+
+.university-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Loading and Error States */
+.university-details-loading,
+.university-details-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.university-details-error h2 {
+  color: #e74c3c;
+  margin-bottom: 10px;
+}
+
+.university-details-error p {
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+/* Back Button */
+.btn-back {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-back:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* University Header */
+.university-header {
+  margin-bottom: 40px;
+}
+
+.university-hero {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.university-hero-image {
+  height: 300px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.university-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.university-hero-content {
+  padding: 30px;
+}
+
+.university-hero-content h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin: 0 0 15px 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.university-location {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+
+.university-quick-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.stat-value.ranking {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.university-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-deadline,
+.btn-budget,
+.btn-apply {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-deadline {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  color: #333;
+  border: 2px solid #ff9a9e;
+}
+
+.btn-deadline:hover {
+  background: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
+}
+
+.btn-budget {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.btn-budget:hover {
+  background: linear-gradient(135deg, #f5576c 0%, #e91e63 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+}
+
+.btn-apply {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: 2px solid #667eea;
+}
+
+.btn-apply:hover:not(:disabled) {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-apply.applied {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  border-color: #2ecc71;
+  cursor: default;
+}
+
+.btn-apply:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Content Sections */
+.university-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.content-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.content-section h2 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  border-bottom: 3px solid #667eea;
+  padding-bottom: 10px;
+}
+
+.university-description {
+  color: #495057;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Tuition Grid */
+.tuition-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.tuition-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.tuition-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.tuition-range {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.tuition-bdt {
+  font-size: 1rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* Programs Grid */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.program-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.program-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.program-card h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.program-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.program-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.program-detail:last-child {
+  border-bottom: none;
+}
+
+.program-detail.deadline-highlight {
+  background: #fff5f5;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #fed7d7;
+}
+
+.program-detail .label {
+  font-weight: 600;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.program-detail .value {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.program-detail .value.deadline {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+/* Enhanced Requirements Styles */
+.program-requirements {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.program-requirements h4 {
+  color: #2c3e50;
+  margin-bottom: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.requirements-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px;
+}
+
+.requirement-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px;
+  background: white;
+  border-radius: 6px;
+  border-left: 3px solid #3498db;
+}
+
+.req-label {
+  font-weight: 600;
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.req-value {
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+/* Requirements Grid */
+.requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.requirement-card {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.requirement-card h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.requirement-card p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* Campus Grid */
+.campus-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.campus-stat {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.campus-stat h3 {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.campus-stat p {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* Contact Grid */
+.contact-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.contact-label {
+  font-weight: 600;
+  color: #495057;
+  min-width: 80px;
+}
+
+.contact-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.contact-value {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+/* Facilities Section */
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.facility-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.facility-item:hover {
+  transform: translateY(-2px);
+}
+
+.facility-icon {
+  font-size: 1.2rem;
+}
+
+.facility-name {
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Living Costs Section */
+.living-costs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.cost-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.cost-card:hover {
+  transform: translateY(-2px);
+}
+
+.cost-card h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.cost-range {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #27ae60;
+}
+
+.cost-single {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #3498db;
+}
+
+.other-fees-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fee-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.fee-item:last-child {
+  border-bottom: none;
+}
+
+.fee-item.total {
+  border-top: 2px solid #3498db;
+  margin-top: 8px;
+  padding-top: 12px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* University Scholarships */
+.university-scholarships .type-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.university-scholarships .scholarship-type {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.university-scholarships .coverage-label, 
+.university-scholarships .deadline-label {
+  font-weight: 600;
+  color: #555;
+  margin-right: 8px;
+}
+
+.university-scholarships .coverage-value, 
+.university-scholarships .deadline-value {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.university-scholarships .scholarship-actions {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.university-scholarships .btn-apply-scholarship {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.university-scholarships .btn-apply-scholarship:hover {
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .university-details-container {
+    padding: 0 15px;
+  }
+  
+  .university-hero {
+    flex-direction: column;
+  }
+  
+  .university-hero-content {
+    padding: 20px;
+  }
+  
+  .university-hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .university-quick-stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .university-actions {
+    flex-direction: column;
+  }
+  
+  .btn-deadline,
+  .btn-budget {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .content-section {
+    padding: 20px;
+  }
+  
+  .content-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .tuition-grid,
+  .programs-grid,
+  .requirements-grid,
+  .campus-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .contact-label {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .university-hero-content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .btn-deadline,
+  .btn-budget {
+    font-size: 0.8rem;
+    padding: 10px 20px;
+  }
+  
+  .content-section {
+    padding: 15px;
+  }
+  
+  .tuition-card,
+  .requirement-card,
+  .campus-stat {
+    padding: 15px;
+  }
+}
+
+/* Scholarships Section */
+.scholarships-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.scholarships-loading .loading-spinner {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.scholarships-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.scholarship-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.scholarship-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.scholarship-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+}
+
+.scholarship-header h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.scholarship-coverage {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.coverage-badge,
+.amount-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+
+.amount-badge {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.scholarship-details {
+  padding: 25px;
+}
+
+.scholarship-requirements h4 {
+  color: #2d3748;
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 8px;
+}
+
+.requirements-list {
+  display: grid;
+  gap: 12px;
+}
+
+.requirement-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f7fafc;
+}
+
+.requirement-item:last-child {
+  border-bottom: none;
+}
+
+.req-label {
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.req-value {
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.scholarship-type {
+  margin: 20px 0;
+}
+
+.type-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.type-badge {
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.type-badge.merit {
+  background: #e6fffa;
+  color: #234e52;
+  border: 1px solid #81e6d9;
+}
+
+.type-badge.need {
+  background: #fef5e7;
+  color: #744210;
+  border: 1px solid #f6ad55;
+}
+
+.scholarship-deadline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+  padding: 12px;
+  background: #f7fafc;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.deadline-label {
+  color: #4a5568;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.deadline-value {
+  color: #e53e3e;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.scholarship-rolling {
+  margin: 15px 0;
+}
+
+.rolling-badge {
+  background: #e6fffa;
+  color: #234e52;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid #81e6d9;
+}
+
+.scholarship-description {
+  margin: 15px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #764ba2;
+}
+
+.scholarship-description p {
+  margin: 0;
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.scholarship-stipend,
+.scholarship-fee {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  background: #f0fff4;
+  border-radius: 6px;
+  border: 1px solid #c6f6d5;
+}
+
+.scholarship-fee {
+  background: #fffaf0;
+  border-color: #fed7aa;
+}
+
+.stipend-label,
+.fee-label {
+  color: #2f855a;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.fee-label {
+  color: #c05621;
+}
+
+.stipend-value,
+.fee-value {
+  color: #22543d;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.fee-value {
+  color: #9c4221;
+}
+
+.no-scholarships {
+  text-align: center;
+  padding: 40px;
+  color: #718096;
+  font-style: italic;
+}
+
+.scholarship-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.btn-apply-scholarship,
+.btn-save-scholarship {
+  flex: 1;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.btn-apply-scholarship {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-apply-scholarship:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-save-scholarship {
+  background: #f7fafc;
+  color: #4a5568;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-save-scholarship:hover {
+  background: #edf2f7;
+  border-color: #cbd5e0;
+  transform: translateY(-1px);
+}
+
+/* Responsive Design for Scholarships */
+@media (max-width: 768px) {
+  .scholarships-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .scholarship-header {
+    padding: 15px;
+  }
+  
+  .scholarship-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .scholarship-details {
+    padding: 20px;
+  }
+  
+  .requirement-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .scholarship-deadline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .scholarship-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .btn-apply-scholarship,
+  .btn-save-scholarship {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scholarships-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .scholarship-coverage {
+    flex-direction: column;
+  }
+  
+  .coverage-badge,
+  .amount-badge {
+    text-align: center;
+  }
+  
+  .scholarship-details {
+    padding: 15px;
+  }
+  
+  .scholarship-stipend,
+  .scholarship-fee {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .scholarship-actions {
+    gap: 8px;
+  }
+  
+  .btn-apply-scholarship,
+  .btn-save-scholarship {
+    padding: 12px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Part-Time Job Opportunities */
+.job-opportunities-content {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.job-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.job-availability,
+.job-wage {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  border-left: 4px solid #667eea;
+}
+
+.job-availability h3,
+.job-wage h3 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.availability-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.availability-badge.excellent {
+  background: #d4edda;
+  color: #155724;
+}
+
+.availability-badge.good {
+  background: #cce7ff;
+  color: #004085;
+}
+
+.availability-badge.fair {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.availability-badge.limited {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.availability-badge.poor {
+  background: #f5c6cb;
+  color: #721c24;
+}
+
+.work-permit-info {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.work-permit-info h3 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.permit-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.permit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f3f4;
+}
+
+.permit-item:last-child {
+  border-bottom: none;
+}
+
+.permit-item span:first-child {
+  font-weight: 600;
+  color: #495057;
+}
+
+.permit-item .allowed {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.permit-item .not-allowed {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+.permit-additional {
+  margin-top: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #17a2b8;
+}
+
+.permit-additional p {
+  margin: 0;
+  color: #495057;
+  line-height: 1.6;
+}
+
+.popular-fields {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.popular-fields h3 {
+  margin: 0 0 20px 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.fields-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+.field-card {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.field-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.field-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.field-header h4 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.demand-level {
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.demand-level.high {
+  background: #d4edda;
+  color: #155724;
+}
+
+.demand-level.medium {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.demand-level.low {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.field-description {
+  margin: 0;
+  color: #6c757d;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.job-description {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.job-description h3 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.job-description p {
+  margin: 0;
+  color: #495057;
+  line-height: 1.6;
+}
+
+/* Responsive Design for Job Opportunities */
+@media (max-width: 768px) {
+  .job-overview {
+    grid-template-columns: 1fr;
+  }
+  
+  .fields-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .permit-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .field-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .job-opportunities-content {
+    gap: 20px;
+  }
+  
+  .work-permit-info,
+  .popular-fields,
+  .job-description {
+    padding: 20px;
+  }
+  
+  .job-availability,
+  .job-wage {
+    padding: 15px;
+  }
+}
